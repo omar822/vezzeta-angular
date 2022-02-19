@@ -1,0 +1,47 @@
+{
+  "posts": [
+    {
+      "id": 3,
+      "name": "omar",
+      "specialization": "dent",
+      "fees": "22",
+      "phoneNumber": "01012306019"
+    },
+    {
+      "id": 4,
+      "name": "sayed ahmed",
+      "specialization": "dentry",
+      "fees": "200",
+      "phoneNumber": "0100000000"
+    }
+  ],
+  "signupUsers": [
+    {
+      "fullname": "omar mahmoud",
+      "mobile": 1012306019,
+      "specialization": "dent",
+      "email": "omar@gmail.com",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "fullname": "ali mahmoud",
+      "mobile": 101010101010,
+      "specialization": "yes",
+      "email": "ali@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "fullname": "mosa mahmoud",
+      "mobile": 101010102,
+      "specialization": "kkk",
+      "email": "mosa@gmail.com",
+      "password": "123",
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

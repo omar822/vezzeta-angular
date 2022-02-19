@@ -1,0 +1,76 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2 style="color: aliceblue;">Veseta CRUD</h2>
+        <div class="d-flex">
+            <button (click)="clickAddDoctor()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">
+                Add Doctor
+            </button>
+            <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div style="margin-top: 20px;" class="container bcontent">
+  <div class="card" style="width: 500px; border: none; border-bottom: 3px solid black; border-radius: 0%;">
+          <div class="col-sm-7">
+              <div class="card-body" *ngFor="let item of doctorData">
+                  <h4 class="card-title">Doctor : {{item.name}}</h4>
+                  <p>rating</p>
+                  <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating>
+                  <hr>
+                  <pre>Rate: <b>{{currentRate}}</b></pre> -->
+                  <h6 class="card-text">Joined Recently</h6>
+                  <p style="font-weight: bold; font-size: large;">Specialized in : {{item.specialization}}</p>
+                  <p style=" margin-top: -10px; font-weight: bold; font-size: large;">Fees : {{item.fees}}</p>
+                  <p style=" margin-top: -10px; font-weight: bold; font-size: large;">phoneNumber : {{item.phoneNumber}}</p>
+                  <a routerLink="/details" style="margin-bottom: 10px;" class="btn btn-primary">More details</a><br>
+                  <button (click)="onEdit(item)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Edit</button>
+                  <button (click)="deleteDoctor(item)" class="btn btn-danger mx-3">Delete</button>
+                  <hr>
+              </div>
+          </div>
+  </div>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Doctor Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+                  <span class="text-danger" *ngIf="formValue.controls['name'].dirty && formValue.hasError('required','name')">*fullname is required</span>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1">Specialization</label>
+                  <input type="text" formControlName="specialization" class="form-control" id="exampleInputPassword1" placeholder="Enter Specialization">
+                  <span class="text-danger" *ngIf="formValue.controls['specialization'].dirty && formValue.hasError('required','specialization')">*specialization is required</span>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1">Fees</label>
+                  <input type="text" formControlName="fees" class="form-control" id="exampleInputPassword1" placeholder="Enter Fees">
+                  <span class="text-danger" *ngIf="formValue.controls['fees'].dirty && formValue.hasError('required','fees')">*fees is required</span>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1">Phone number</label>
+                  <input type="text" formControlName="phoneNumber" class="form-control" id="exampleInputPassword1" placeholder="Enter Phone number">
+                  <span class="text-danger" *ngIf="formValue.controls['phoneNumber'].dirty && formValue.hasError('required','phoneNumber')">*phoneNumber is required</span>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" [disabled]="!formValue.valid" *ngIf="showAdd" (click)="postDoctorDetails()" class="btn btn-primary">Add new</button>
+          <button type="button" [disabled]="!formValue.valid" *ngIf="showUpdate"  (click)="updateDoctorDetails()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
